@@ -5,6 +5,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export PATH="$HOME/bin:$PATH"
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -97,7 +99,9 @@ fi
 # custom functions
 function  hi            { ssh $@;       }
 function  pgrep         { ps auxww | grep $@; }
-function  home          { <redacted>; }
+function  home          { <redacted> }
+function  mkd           { mkdir $@ && cd $@; }
+
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -115,5 +119,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# custom shit
+
 export EDITOR=vim
 export PAGER=less
+. <(eksctl completion bash)
+complete -C '/home/jdavis/.local/bin/aws_completer' aws
