@@ -99,7 +99,7 @@ fi
 # custom functions
 function  hi            { ssh $@;       }
 function  pgrep         { ps auxww | grep $@; }
-function  home          { ssh pi@home.nocureforugly.com; }
+function  home          { <redacted> }
 function  mkd           { mkdir $@ && cd $@; }
 
 
